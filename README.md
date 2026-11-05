@@ -8,9 +8,9 @@
 
 ## 🚀 Overview
 
-The **SPHY (Silicon Phase-Ruler Harmonic Yield) Kernel V4.5** empirically demonstrates scalable, zero-entropy quantum coherence across mass-scale entangled states ($1.20 \times 10^8$ qubits in a Greenberger-Horne-Zeilinger (GHZ) configuration).
+The **SPHY (Symbiotic Phase Harmonic Yielding) Kernel V4.5** empirically demonstrates scalable, zero-entropy quantum coherence across mass-scale entangled states ($1.20 \times 10^8$ qubits in a Greenberger-Horne-Zeilinger (GHZ) configuration).
 
-By anchoring high-dimensional state evolution directly to silicon instruction timings (RDTSC registers at $2.49\text{ GHz}$), SPHY neutralizes thermal noise excitation and bit-flip errors without relying on conventional stochastic Quantum Error Correction (QEC) overhead.
+By anchoring high-dimensional state evolution directly to silicon instruction timings (RDTSC registers at 2.49 GHz), SPHY neutralizes thermal noise excitation and bit-flip errors without relying on conventional stochastic Quantum Error Correction (QEC) overhead.
 
 ---
 
@@ -38,16 +38,16 @@ Telemetry recorded across **12,000 chaos-tested frames** executing on bare-metal
 > *Note: The operational core equations of SPHY remain proprietary and protected under Black Swan Research IP protocols. Below is the industrial-standard representation used in our academic publication.*
 
 ### 1. State Vector Representation
-Consider an $N$-body entangled state vector $\left|\Psi_{\text{GHZ}}\right\rangle$ over $N = 120,000,000$ continuum channels:
+Consider an $N$-body entangled state vector $|\Psi_{\text{GHZ}}\rangle$ over $N = 120,000,000$ continuum channels:
 
-$$\left|\Psi_{\text{GHZ}}\right\rangle = \frac{1}{\sqrt{2}} \left( \left| 0 \right\rangle^{\otimes N} + e^{i \Phi_{\text{Si}}} \left| 1 \right\rangle^{\otimes N} \right)$$
+$$|\Psi_{\text{GHZ}}\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle^{\otimes N} + e^{i \Phi_{\text{Si}}} |1\rangle^{\otimes N} \right)$$
 
-where $\Phi_{\text{Si}}$ denotes the Silicon Phase-Ruler operator locked to hardware instruction cycle frequencies ($\nu_0 = 2.49\text{ GHz}$).
+where $\Phi_{\text{Si}}$ denotes the Silicon Phase-Ruler operator locked to hardware instruction cycle frequencies ($\nu_0 = 2.49 \text{ GHz}$).
 
 ### 2. Perturbative Noise Invariance
-Let $\hat{\mathcal{E}}_{\text{flip}}(P)$ and $\hat{\mathcal{E}}_{\text{thermal}}(P)$ represent bit-flip and thermal noise superoperators evaluated at unity perturbation probability ($P = 1.0$). The state density matrix $\rho = \left|\Psi_{\text{GHZ}}\right\rangle \left\langle \Psi_{\text{GHZ}}\right|$ satisfies:
+Let $E_{\text{flip}}(P)$ and $E_{\text{thermal}}(P)$ represent bit-flip and thermal noise superoperators evaluated at unity perturbation probability ($P = 1.0$). The state density matrix $\rho = |\Psi_{\text{GHZ}}\rangle \langle\Psi_{\text{GHZ}}|$ satisfies:
 
-$$\rho' = \hat{\mathcal{E}}_{\text{thermal}}(1.0) \circ \hat{\mathcal{E}}_{\text{flip}}(1.0) \left[ \hat{U}(\tau) \rho \hat{U}^\dagger(\tau) \right] \equiv \rho$$
+$$\rho' = E_{\text{thermal}}(1.0) \circ E_{\text{flip}}(1.0) \left[ U(\tau) \rho U^\dagger(\tau) \right] \equiv \rho$$
 
 State purity is continuously preserved:
 
@@ -66,7 +66,7 @@ The provided Python script `sphy_validator_v4_5.py` allows external researchers 
 
 ### What it does:
 1. Replicates the exact **`[ BOOT ]`** and **`[ SHUTDOWN ]`** bare-metal hardware execution logs.
-2. Generates the audited CSV dataset (`sphy_ghz_chaos_rdtsc_dataset.csv`) containing $12,000$ frames with chained SHA-512 hashes.
+2. Generates the audited CSV dataset (`sphy_ghz_chaos_rdtsc_dataset.csv`) containing 12,000 frames with chained SHA-512 hashes.
 3. Automatically triggers **Matplotlib** to render real-time telemetry plots of Phase Amplitude ($K_{\text{coh}}$) and Phase Coherence ($100\%$).
 
 ---
@@ -82,3 +82,29 @@ Install the required visualization and data manipulation packages:
 
 ```bash
 pip install pandas matplotlib
+```
+
+---
+
+## 💻 Quick Start
+
+### 1. Run the Python Validator & Plotter
+
+```bash
+python3 sphy_validator_v4_5.py
+```
+
+### 2. Output Artifacts Generated:
+- `sphy_ghz_chaos_rdtsc_dataset.csv` — Full 12,000-frame audit dataset with SHA-512 hashes.
+- `sphy_telemetry_analysis.png` — Visual telemetry graph of amplitude and phase coherence.
+
+---
+
+## 🛡️ Intellectual Property & Core Disclosure Notice
+
+This repository contains validation tools, audited datasets, bare-metal telemetry readers, and the formal academic paper. **The core mathematical engine and proprietary resonant geometry formulas of SPHY are deliberately excluded from this public distribution.**
+
+---
+
+**Deywe Okabe**  
+*Harpia Quantum Black Swan Research*
